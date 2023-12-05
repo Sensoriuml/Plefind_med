@@ -1,0 +1,60 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+
+    release {
+        storeFile file('C:\\Users\\ASUS.000\\Desktop\\Praca\\4brain.jks')
+        storePassword 'am276829'
+        keyPassword 'am276829'
+        keyAlias = 'dribble'
+    }
+    }
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId 'com.plefind.med.BLE'
+        minSdkVersion 18
+        targetSdkVersion 28
+        versionCode 18
+        versionName "2.7"
+        vectorDrawables.useSupportLibrary = true
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:support-v13:28.0.0'
+    androidTestCompile 'com.android.support.test:runner:1.0.2'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestCompile 'com.android.support.test.espresso:espresso-intents:3.0.2'
+    implementation 'com.jjoe64:graphview:4.2.2'
+
+    implementation 'com.backendless:backendless:5.2.4'
+    implementation('io.socket:socket.io-client:1.0.0') {
+        //      excluding org.json which is provided by Android
+        exclude group: 'org.json', module: 'json'
+    }
+
+    implementation 'com.github.Ibotta:Supported-Picker-Dialogs:1.0.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    implementation 'com.github.angads25:filepicker:1.1.1'
+
+}
